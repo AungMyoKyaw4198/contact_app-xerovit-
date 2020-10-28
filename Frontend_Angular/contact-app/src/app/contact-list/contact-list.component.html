@@ -1,0 +1,16 @@
+<div class="container">
+  <nav>
+    <button type="button" class="btn btn-primary" routerLink="add">
+      <i class="fa fa-plus fa-1x"></i>
+      New Contact
+    </button>
+  </nav>
+  <router-outlet></router-outlet>
+  <ul class="list-group" *ngFor="let contact of contactList">
+    <li class="list-group-item">
+      <h2>{{ contact.name }}</h2>
+      <div>{{ contact.phone }}</div>
+      <div>{{ contact.email }}</div>
+    </li>
+  </ul>
+</div>

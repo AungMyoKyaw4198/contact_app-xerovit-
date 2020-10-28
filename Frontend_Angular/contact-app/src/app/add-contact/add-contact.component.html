@@ -1,0 +1,43 @@
+<div class="container">
+  <form [formGroup]="addContactForm" (ngSubmit)="addContact()" novalidate>
+    <div class="form-group">
+      <label for="InputName">Full Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="InputName"
+        aria-describedby="emailHelp"
+        placeholder="Name"
+        required
+      />
+      <div class="invalid-feedback">Please provide a valid city.</div>
+    </div>
+    <div class="form-group">
+      <label for="InputEmail">Email</label>
+      <input
+        formControlName="email"
+        type="email"
+        class="form-control"
+        id="InputEmail"
+        aria-describedby="emailHelp"
+        placeholder="Email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="InputPhone">Telephone</label>
+      <input
+        formControlName="phone"
+        type="text"
+        class="form-control"
+        id="InputPhone"
+        aria-describedby="emailHelp"
+        placeholder="Telephone"
+        required
+      />
+    </div>
+    <a class="btn btn-outline-danger" href="/contacts" role="button">Cancel</a>
+    <button type="submit" class="btn btn-outline-primary">Save</button>
+  </form>
+</div>
