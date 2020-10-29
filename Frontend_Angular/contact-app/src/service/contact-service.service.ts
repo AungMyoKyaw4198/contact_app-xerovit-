@@ -10,11 +10,23 @@ export class ContactServiceService {
   private baseUrl = 'http://localhost:3000/contacts';
   constructor(private http: HttpClient) {}
 
-  getAllContactList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+  getAllContactList(): Observable<Contact[]> {
+    return this.http.get<Contact[]>(`${this.baseUrl}`);
   }
 
-  addContact(contact: Contact): Observable<object> {
-    return this.http.post(`${this.baseUrl}`, contact);
+  addContact(contact: Contact): Observable<Contact> {
+    return this.http.post<Contact>(`${this.baseUrl}`, contact);
+  }
+
+  getContactById(id: number): Observable<Contact> {
+    return this.http.get<Contact>(`${this.baseUrl}/${id}`);
+  }
+
+  updateContact(id: number, contact: Contact): Observable<object> {
+    return this.http.put(`${this.baseUrl}/${id}`, contact);
+  }
+
+  deleteContact(id: number): Observable<Contact> {
+    return this.http.delete<Contact>(`${this.baseUrl}/${id}`);
   }
 }

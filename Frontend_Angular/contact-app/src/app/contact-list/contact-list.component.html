@@ -1,16 +1,67 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">
+      <i class="fa fa-address-book fa-2x"></i>
+      Contacts
+    </li>
+  </ol>
+</nav>
 <div class="container">
-  <nav>
-    <button type="button" class="btn btn-primary" routerLink="add">
-      <i class="fa fa-plus fa-1x"></i>
-      New Contact
-    </button>
-  </nav>
-  <router-outlet></router-outlet>
-  <ul class="list-group" *ngFor="let contact of contactList">
+  <div class="row">
+    <div class="col">
+      <input
+        class="form-control"
+        id="myInput"
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search.."
+      />
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-success" routerLink="add">
+        <i class="fa fa-plus fa-1x"></i>
+        New Contact
+      </button>
+    </div>
+  </div>
+  <ul
+    class="list-group"
+    *ngFor="let contact of contactList | filter: searchText"
+  >
     <li class="list-group-item">
-      <h2>{{ contact.name }}</h2>
-      <div>{{ contact.phone }}</div>
-      <div>{{ contact.email }}</div>
+      <div class="row">
+        <div class="col">
+          <h2>
+            {{ contact.name }}
+          </h2>
+          <div>{{ contact.phone }}</div>
+          <div>{{ contact.email }}</div>
+        </div>
+        <div class="col">
+          <nav>
+            <button
+              type="button"
+              class="btn btn-warning"
+              routerLink="edit/{{ contact.id }}"
+            >
+              <i class="fa fa-edit fa-1x"></i>
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="openConfirmDialog(contact.id)"
+            >
+              <i class="fa fa-trash fa-1x"></i>
+              Delete
+            </button>
+          </nav>
+        </div>
+      </div>
     </li>
   </ul>
+  <div class="alert alert-primary" role="alert" *ngIf="isEmptyContacts">
+    <i class="fa fa-info-circle fa-1x"></i>
+    You have no contacts currently.
+  </div>
 </div>
