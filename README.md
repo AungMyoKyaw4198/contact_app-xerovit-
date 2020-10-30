@@ -16,3 +16,13 @@ Front-end : Angular ( Version ~ 9)
 4. Confirm dialog will shown when user try to delete any contacts
 
 5. Confirm dialog will shown when user try to add new contact with already existed phone or email
+
+# Screens
+1. ShowContactListScreen
+![ShowContactListScreen](ShowContactListScreen.png)
+
+2. AddContactScreen
+![AddContactScreen](AddContactScreen.png)
+
+3. EditContactScreen
+![EditContactScreen](EditContactScreen.png)
