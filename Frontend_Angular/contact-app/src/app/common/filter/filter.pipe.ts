@@ -4,6 +4,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
+  /**
+   * For filtering the text and returning the filtered result
+   * @param items list of items
+   * @param searchText search text input by user
+   * @returns Filtered items based on user SeachText
+   */
   transform(items: any[], searchText: string): any[] {
     if (!items) {
       return [];

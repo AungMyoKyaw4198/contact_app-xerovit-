@@ -11,16 +11,22 @@ import { ContactServiceService } from '../../service/contact-service.service';
 })
 export class EditContactComponent implements OnInit {
   newContact: Contact;
+
   editContactForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
   });
+
   constructor(
     private counterService: ContactServiceService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  /**
+   * Getter Declarations for From validation
+   */
   get name() {
     return this.editContactForm.get('name');
   }
@@ -30,10 +36,14 @@ export class EditContactComponent implements OnInit {
   get phone() {
     return this.editContactForm.get('phone');
   }
+
   ngOnInit(): void {
     this.getContactById();
   }
 
+  /**
+   * Geting Contact by using ID
+   */
   getContactById() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.counterService.getContactById(id).subscribe((data) => {
@@ -45,6 +55,9 @@ export class EditContactComponent implements OnInit {
     });
   }
 
+  /**
+   * Updating Contact
+   */
   updateContact() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.newContact = this.editContactForm.value;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../../modal/contact';
-import { Observable } from 'rxjs';
 import { ContactServiceService } from '../../service/contact-service.service';
 import { ConfirmDialogService } from '../common/confirm-dialog/confirm-dialog.service';
 
@@ -14,6 +13,7 @@ export class ContactListComponent implements OnInit {
   searchText: string;
   currentContact: Contact;
   isEmptyContacts = false;
+
   constructor(
     private contactService: ContactServiceService,
     private confirmDialogService: ConfirmDialogService
@@ -23,6 +23,9 @@ export class ContactListComponent implements OnInit {
     this.showAllContactList();
   }
 
+  /**
+   * Get all contacts
+   */
   showAllContactList() {
     this.contactService.getAllContactList().subscribe(
       (data) => {
@@ -39,12 +42,20 @@ export class ContactListComponent implements OnInit {
     );
   }
 
+  /**
+   * Delete Contact
+   * @param id id of contact
+   */
   deleteContact(id: number) {
     this.contactService.deleteContact(id).subscribe((res: any) => {
       location.reload();
     });
   }
 
+  /**
+   * Confirm dialog for deleting contact
+   * @param id id number of contact
+   */
   openConfirmDialog(id: number) {
     this.contactService.getContactById(id).subscribe((data) => {
       this.currentContact = data;
@@ -66,7 +77,7 @@ export class ContactListComponent implements OnInit {
         )
         .catch(() =>
           console.log(
-            'User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'
+            'User dismissed the dialog (by using ESC, clicking the cross icon, or clicking outside the dialog)'
           )
         );
     });

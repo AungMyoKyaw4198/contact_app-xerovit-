@@ -1,0 +1,17 @@
+#main-content {
+  margin-top: 5%;
+  background-color: aliceblue;
+  max-width: 50%;
+  padding: 3%;
+}
+#form {
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+#button {
+  margin: 1%;
+}
+
+.errorMessage {
+  color: red;
+}

@@ -13,18 +13,27 @@ export class ConfirmDialogComponent implements OnInit {
   @Input() phone: string;
   @Input() btnOkText: string;
   @Input() btnCancelText: string;
+  @Input() cancelButtonInclude: boolean;
   constructor(private activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {}
 
+  /**
+   * Close the dialog box when user click cancel
+   */
   public decline() {
     this.activeModal.dismiss();
   }
-
+  /**
+   * Accept the dialog box when user click Ok
+   */
   public accept() {
     this.activeModal.close(true);
   }
 
+  /**
+   * Close the dialog box when user dismiss it
+   */
   public dismiss() {
     this.activeModal.dismiss();
   }

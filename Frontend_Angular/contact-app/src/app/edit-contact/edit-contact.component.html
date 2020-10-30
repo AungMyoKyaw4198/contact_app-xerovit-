@@ -1,64 +1,93 @@
+<!-- Page Navigation Area -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <i class="fa fa-address-book fa-2x"></i>
-      <a href="/contacts">Contacts</a>
+      <a href="/contacts"><h5>Contacts</h5></a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Edit Contact</li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <h5>Edit Contact</h5>
+    </li>
   </ol>
 </nav>
-<div class="container">
+
+<!-- Edit Contact Form -->
+<div class="container" id="main-content">
   <h1>Edit Contact</h1>
-  <form [formGroup]="editContactForm" (ngSubmit)="updateContact()" novalidate>
-    <div class="form-group">
-      <label for="InputName">Full Name</label>
-      <input
-        formControlName="name"
-        type="text"
-        class="form-control"
-        id="InputName"
-        aria-describedby="emailHelp"
-        placeholder="name"
-        required
-      />
-      <span *ngIf="name.hasError('required')">Name is required</span>
-      <div class="invalid-feedback">Please provide a valid city.</div>
+  <form [formGroup]="editContactForm" (ngSubmit)="updateContact()" id="form">
+    <div class="form-group row">
+      <label for="InputName" class="col-sm-2 col-form-label" align="right"
+        >Full Name :</label
+      >
+      <div class="col-sm-10">
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          id="InputName"
+          aria-describedby="emailHelp"
+          placeholder="name"
+          required
+        />
+        <span class="errorMessage" *ngIf="name.hasError('required')"
+          >*Name is required</span
+        >
+      </div>
     </div>
-    <div class="form-group">
-      <label for="InputEmail">Email</label>
-      <input
-        formControlName="email"
-        type="email"
-        class="form-control"
-        id="InputEmail"
-        aria-describedby="emailHelp"
-        placeholder="email"
-        required
-      />
-      <span *ngIf="email.hasError('required')">Email is required</span>
+    <div class="form-group row">
+      <label for="InputEmail" class="col-sm-2 col-form-label" align="right"
+        >Email :</label
+      >
+      <div class="col-sm-10">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="InputEmail"
+          aria-describedby="emailHelp"
+          placeholder="email"
+          required
+        />
+        <span class="errorMessage" *ngIf="email.hasError('required')"
+          >*Email is required</span
+        >
+      </div>
     </div>
-    <div class="form-group">
-      <label for="InputPhone">Telephone</label>
-      <input
-        formControlName="phone"
-        type="text"
-        class="form-control"
-        id="InputPhone"
-        aria-describedby="emailHelp"
-        placeholder="phone"
-        required
-      />
-      <span *ngIf="phone.hasError('required')">Phone is required</span>
+    <div class="form-group row">
+      <label for="InputPhone" class="col-sm-2 col-form-label" align="right"
+        >Telephone :</label
+      >
+      <div class="col-sm-10">
+        <input
+          formControlName="phone"
+          type="text"
+          class="form-control"
+          id="InputPhone"
+          aria-describedby="emailHelp"
+          placeholder="phone"
+          required
+        />
+        <span class="errorMessage" *ngIf="phone.hasError('required')"
+          >*Phone is required</span
+        >
+      </div>
     </div>
-    <a class="btn btn-outline-danger" href="/contacts" role="button"
-      ><i class="fa fa-times fa-1x"></i>Cancel</a
-    >
-    <button
-      type="submit"
-      class="btn btn-success"
-      [disabled]="!editContactForm.valid"
-    >
-      <i class="fa fa-save fa-1x"></i>Save
-    </button>
+    <div class="col" align="right">
+      <a
+        class="btn btn-outline-danger"
+        href="/contacts"
+        role="button"
+        id="button"
+        ><i class="fa fa-times fa-1x"></i>Cancel</a
+      >
+      <button
+        type="submit"
+        class="btn btn-success"
+        id="button"
+        [disabled]="!editContactForm.valid"
+      >
+        <i class="fa fa-save fa-1x"></i>Save
+      </button>
+    </div>
   </form>
 </div>
